@@ -1,0 +1,401 @@
+/* ==========================================================================
+   Components: header, button, tag, section label, card, placeholder, footer
+   ========================================================================== */
+
+/* ---------- Site header / Navbar ---------- */
+/* 하단선은 box-shadow로 그려 헤더 높이가 정확히 --header-h가 되게 합니다. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background: transparent;
+  box-shadow: inset 0 -1px 0 transparent;
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+.site-header.is-scrolled {
+  background: var(--color-header-bg);
+  box-shadow: inset 0 -1px 0 var(--color-border);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  backdrop-filter: saturate(180%) blur(14px);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header.is-scrolled {
+    background: var(--color-bg);
+  }
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: var(--header-h);
+}
+
+.site-title,
+.nav-list a {
+  text-decoration: none;
+}
+
+.site-title {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 44px;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.site-title::before {
+  content: "";
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 3px;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-accent-soft);
+}
+
+.nav-list {
+  display: flex;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-list a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+.nav-list a::after {
+  content: "";
+  position: absolute;
+  bottom: 7px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+  opacity: 0;
+  transform: translateX(-50%) scale(0);
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.nav-list a:hover {
+  color: var(--color-text);
+  background: var(--color-surface-2);
+}
+
+.nav-list a.is-active {
+  color: var(--color-accent-text);
+}
+
+.nav-list a.is-active::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* ---------- Button ---------- */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.button {
+  --button-fg: var(--color-on-accent);
+  --button-bg: var(--color-accent);
+  --button-border: var(--color-accent);
+  --button-shadow: var(--shadow-sm);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: 0.625rem 1.125rem;
+  border: 1px solid var(--button-border);
+  border-radius: var(--radius-md);
+  color: var(--button-fg);
+  background: var(--button-bg);
+  box-shadow: var(--button-shadow);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.button:hover {
+  --button-bg: var(--color-accent-hover);
+  --button-border: var(--color-accent-hover);
+  --button-shadow: var(--shadow-accent);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button-secondary {
+  --button-fg: var(--color-text);
+  --button-bg: var(--color-surface);
+  --button-border: var(--color-border-strong);
+  --button-shadow: var(--shadow-xs);
+}
+
+.button-secondary:hover {
+  --button-bg: var(--color-surface-2);
+  --button-border: var(--color-text-subtle);
+  --button-shadow: var(--shadow-sm);
+}
+
+/* 아이콘: Primary는 →, 새 창 링크는 ↗ */
+.button:not(.button-secondary)::after,
+.button[target='_blank']::after {
+  content: "";
+  flex: none;
+  width: 1em;
+  height: 1em;
+  background: currentColor;
+  -webkit-mask: var(--icon-arrow-right) center / contain no-repeat;
+  mask: var(--icon-arrow-right) center / contain no-repeat;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.button[target='_blank']::after {
+  -webkit-mask-image: var(--icon-arrow-up-right);
+  mask-image: var(--icon-arrow-up-right);
+}
+
+.button-secondary[target='_blank']::after {
+  color: var(--color-text-subtle);
+}
+
+.button:not(.button-secondary):not([target='_blank']):hover::after {
+  transform: translateX(3px);
+}
+
+.button[target='_blank']:hover::after {
+  transform: translate(2px, -2px);
+}
+
+/* ---------- Tag / chip ---------- */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag-list li,
+.skill-group li {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.875rem;
+  padding: 0.25rem 0.625rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+/* ---------- Section label ---------- */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  color: var(--color-text-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.section-label::before {
+  content: "";
+  flex: none;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+/* 메인 섹션 번호: 01 — ABOUT ────── */
+main {
+  counter-reset: section;
+}
+
+.section:not(.hero) .section-label::before {
+  counter-increment: section;
+  content: counter(section, decimal-leading-zero);
+  content: counter(section, decimal-leading-zero) / "";
+  width: auto;
+  height: auto;
+  color: var(--color-accent-text);
+  background: none;
+}
+
+.section:not(.hero) .section-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* ---------- Card base ---------- */
+.info-item,
+.project-card,
+.skill-group,
+.contact-list > div {
+  position: relative;
+  isolation: isolate;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-xs);
+}
+
+/* 커서를 따라가는 스포트라이트 (정밀 포인터에서만) */
+@media (hover: hover) and (pointer: fine) {
+  .info-item::before,
+  .project-card::before,
+  .skill-group::before,
+  .contact-list > div::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(
+      22rem circle at var(--x, 50%) var(--y, 0%),
+      var(--color-spotlight),
+      transparent 70%
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-base) var(--ease-out);
+  }
+
+  .info-item:hover::before,
+  .project-card:hover::before,
+  .skill-group:hover::before,
+  .contact-list > div:hover::before {
+    opacity: 1;
+  }
+}
+
+/* ---------- Image placeholders ---------- */
+.image-placeholder,
+.architecture-placeholder {
+  --ph-a-pos: 0% 0%;
+  --ph-b-pos: 100% 100%;
+
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--space-3);
+  aspect-ratio: 16 / 9;
+  padding: var(--space-4);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-accent-text);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.image-placeholder {
+  background:
+    radial-gradient(circle, var(--color-placeholder-dot) 1px, transparent 1.5px)
+      center / 18px 18px,
+    radial-gradient(90% 90% at var(--ph-a-pos), var(--color-placeholder-a), transparent 60%),
+    radial-gradient(80% 80% at var(--ph-b-pos), var(--color-placeholder-b), transparent 65%),
+    var(--color-placeholder-base);
+}
+
+.architecture-placeholder {
+  border-style: dashed;
+  border-color: var(--color-border-strong);
+  background:
+    linear-gradient(var(--color-grid-line) 1px, transparent 1px) center / 24px 24px,
+    linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px) center / 24px 24px,
+    var(--color-surface-2);
+}
+
+.image-placeholder::before,
+.architecture-placeholder::before {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  background: currentColor;
+  opacity: 0.7;
+  -webkit-mask: var(--icon-image) center / contain no-repeat;
+  mask: var(--icon-image) center / contain no-repeat;
+}
+
+.architecture-placeholder::before {
+  -webkit-mask-image: var(--icon-architecture);
+  mask-image: var(--icon-architecture);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  display: flex;
+  align-items: center;
+  min-height: var(--footer-h);
+  padding: var(--space-6) 0;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.02em;
+}
+
+.site-footer p {
+  margin: 0;
+}

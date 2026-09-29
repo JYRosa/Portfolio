@@ -1,0 +1,5 @@
+/* 스타일 진입점: 순서대로 토큰 → 기본 → 컴포넌트 → 섹션 */
+@import './tokens.css';
+@import './base.css';
+@import './components.css';
+@import './sections.css';

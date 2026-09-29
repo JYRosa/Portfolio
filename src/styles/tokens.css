@@ -1,0 +1,175 @@
+/* ==========================================================================
+   Design tokens
+   - 모든 색·타이포·간격·radius·shadow·motion 값은 여기에서만 정의합니다.
+   - 라이트가 기본값이며, prefers-color-scheme: dark에서 색 토큰만 재정의합니다.
+   ========================================================================== */
+
+:root {
+  color-scheme: light dark;
+
+  /* ---------- Color: neutral ---------- */
+  --color-bg: #f8f9fb;
+  --color-surface: #ffffff;
+  --color-surface-2: #f1f3f6;
+  --color-border: #e3e6eb;
+  --color-border-strong: #c9ced6;
+  --color-text: #0f1115;
+  --color-text-muted: #4a5160;
+  --color-text-subtle: #646b79;
+
+  /* ---------- Color: accent (indigo) ---------- */
+  --color-accent: #4f46e5;
+  --color-accent-hover: #4338ca;
+  --color-accent-soft: #eef0fe;
+  --color-accent-soft-border: #dadefb;
+  --color-accent-text: #4338ca;
+  --color-on-accent: #ffffff;
+  --color-focus: #4f46e5;
+
+  /* ---------- Color: effects ---------- */
+  --color-header-bg: rgb(248 249 251 / 0.74);
+  --color-dot: rgb(15 17 21 / 0.13);
+  --color-dot-accent: rgb(79 70 229 / 0.72);
+  --color-glow: rgb(99 102 241 / 0.1);
+  --color-trail: rgb(99 102 241 / 0.12);
+  --color-spotlight: rgb(79 70 229 / 0.06);
+  --color-grid-line: rgb(67 56 202 / 0.08);
+
+  /* ---------- Color: image placeholder ---------- */
+  --color-placeholder-base: #eef0fe;
+  --color-placeholder-a: #cdd1fb;
+  --color-placeholder-b: #e1e4fd;
+  --color-placeholder-dot: rgb(67 56 202 / 0.14);
+
+  /* ---------- Typography ---------- */
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono",
+    Menlo, Consolas, "Pretendard Variable", monospace;
+
+  --text-2xs: 0.75rem; /* 12 */
+  --text-xs: 0.8125rem; /* 13 */
+  --text-sm: 0.875rem; /* 14 */
+  --text-base: 1rem; /* 16 */
+  --text-md: 1.0625rem; /* 17 */
+  --text-lg: 1.125rem; /* 18 */
+  --text-xl: 1.25rem; /* 20 */
+  --text-2xl: clamp(1.375rem, 1.2rem + 0.7vw, 1.625rem); /* 22 → 26 */
+  --text-3xl: clamp(2rem, 1.4rem + 2.6vw, 3.25rem); /* 32 → 52 */
+  --text-4xl: clamp(2.5rem, 1.6rem + 4vw, 4.5rem); /* 40 → 72 */
+  --text-display: clamp(3.5rem, 1.6rem + 8.4vw, 7rem); /* 56 → 112 */
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.4;
+  --leading-normal: 1.7;
+  --leading-relaxed: 1.85;
+
+  --tracking-display: -0.045em;
+  --tracking-tight: -0.03em;
+  --tracking-label: 0.14em;
+
+  /* ---------- Spacing (4px base) ---------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --section-space: clamp(4.5rem, 3rem + 6vw, 8rem);
+
+  /* ---------- Layout ---------- */
+  --container-max: 1120px;
+  --gutter: 1.5rem;
+  --header-h: 4rem;
+  --footer-h: 6rem;
+  --reading-max: 46rem;
+  --dot-gap: 24px;
+
+  /* ---------- Radius ---------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 999px;
+
+  /* ---------- Shadow ---------- */
+  --shadow-xs: 0 1px 2px rgb(15 17 21 / 0.04);
+  --shadow-sm: 0 1px 2px rgb(15 17 21 / 0.05), 0 1px 3px rgb(15 17 21 / 0.04);
+  --shadow-md: 0 2px 4px rgb(15 17 21 / 0.04),
+    0 12px 24px -12px rgb(15 17 21 / 0.14);
+  --shadow-lg: 0 4px 8px rgb(15 17 21 / 0.04),
+    0 24px 48px -20px rgb(15 17 21 / 0.26);
+  --shadow-accent: 0 6px 20px -6px rgb(79 70 229 / 0.5);
+
+  /* ---------- Motion ---------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 600ms;
+  --reveal-distance: 12px;
+
+  /* ---------- Icons (mask-image) ---------- */
+  --icon-arrow-right: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
+  --icon-arrow-up-right: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7M8 7h9v9'/%3E%3C/svg%3E");
+  --icon-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='16' rx='2'/%3E%3Ccircle cx='9' cy='10' r='1.75'/%3E%3Cpath d='m21 16-4.5-4.5L7 20'/%3E%3C/svg%3E");
+  --icon-architecture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='7' height='6' rx='1.5'/%3E%3Crect x='14' y='3' width='7' height='6' rx='1.5'/%3E%3Crect x='8.5' y='15' width='7' height='6' rx='1.5'/%3E%3Cpath d='M6.5 9v2.5a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9M12 12.5V15'/%3E%3C/svg%3E");
+
+  /* ---------- Layer ---------- */
+  --z-header: 50;
+  --z-skip-link: 100;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0a0b0e;
+    --color-surface: #111318;
+    --color-surface-2: #171a21;
+    --color-border: #242833;
+    --color-border-strong: #343a48;
+    --color-text: #eceef2;
+    --color-text-muted: #a1a8b5;
+    --color-text-subtle: #8a91a0;
+
+    --color-accent: #818cf8;
+    --color-accent-hover: #a5b4fc;
+    --color-accent-soft: #1a1c33;
+    --color-accent-soft-border: #2e3163;
+    --color-accent-text: #a5b4fc;
+    --color-on-accent: #0a0b0e;
+    --color-focus: #a5b4fc;
+
+    --color-header-bg: rgb(10 11 14 / 0.72);
+    --color-dot: rgb(236 238 242 / 0.09);
+    --color-dot-accent: rgb(165 180 252 / 0.78);
+    --color-glow: rgb(129 140 248 / 0.12);
+    --color-trail: rgb(129 140 248 / 0.14);
+    --color-spotlight: rgb(129 140 248 / 0.08);
+    --color-grid-line: rgb(165 180 252 / 0.07);
+
+    --color-placeholder-base: #14162a;
+    --color-placeholder-a: #2a2e6e;
+    --color-placeholder-b: #1c1f48;
+    --color-placeholder-dot: rgb(165 180 252 / 0.12);
+
+    --shadow-xs: 0 1px 2px rgb(0 0 0 / 0.4);
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.5), 0 1px 3px rgb(0 0 0 / 0.3);
+    --shadow-md: 0 2px 4px rgb(0 0 0 / 0.3), 0 12px 24px -12px rgb(0 0 0 / 0.6);
+    --shadow-lg: 0 4px 8px rgb(0 0 0 / 0.3), 0 24px 48px -20px rgb(0 0 0 / 0.8);
+    --shadow-accent: 0 6px 24px -6px rgb(129 140 248 / 0.45);
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --gutter: 1rem;
+    --header-h: 6.25rem;
+    --dot-gap: 20px;
+  }
+}

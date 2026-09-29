@@ -46,7 +46,7 @@ function ProjectDetail() {
   const project = getProjectById(projectId)
   const activeSectionId = useScrollSpy(tocIds, {
     enabled: Boolean(project),
-    offset: 0.3,
+    useScrollMargin: true,
   })
 
   if (!project) {
@@ -73,13 +73,22 @@ function ProjectDetail() {
         </header>
 
         <div className="container detail-content">
-          <div
-            className="image-placeholder image-placeholder-large"
-            role="img"
-            aria-label={`${project.title} 대표 이미지가 들어갈 영역`}
-          >
-            Project Detail Image Placeholder
-          </div>
+          {project.image ? (
+            <figure className="detail-image">
+              <img
+                src={`${import.meta.env.BASE_URL}${project.image}`}
+                alt={`${project.title} 메인 화면`}
+              />
+            </figure>
+          ) : (
+            <div
+              className="image-placeholder image-placeholder-large"
+              role="img"
+              aria-label={`${project.title} 대표 이미지가 들어갈 영역`}
+            >
+              Project Detail Image Placeholder
+            </div>
+          )}
 
           <div className="detail-layout">
             <nav className="detail-toc" aria-label="프로젝트 상세 목차">
@@ -158,22 +167,26 @@ function ProjectDetail() {
               >
                 <h2 id="project-links-title">프로젝트 링크</h2>
                 <div className="button-group">
-                  <a
-                    className="button"
-                    href={project.links.github}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    GitHub
-                  </a>
-                  <a
-                    className="button button-secondary"
-                    href={project.links.demo}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Demo
-                  </a>
+                  {project.links.github && (
+                    <a
+                      className="button"
+                      href={project.links.github}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      GitHub
+                    </a>
+                  )}
+                  {project.links.demo && (
+                    <a
+                      className="button button-secondary"
+                      href={project.links.demo}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Demo
+                    </a>
+                  )}
                 </div>
               </section>
 

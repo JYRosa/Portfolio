@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
 
-// 뷰포트 상단에서 offset 비율 지점을 지난 마지막 요소를 현재 위치로 봅니다.
+// 기본은 뷰포트의 offset 비율을, 앵커 목차는 CSS scroll-margin 위치를 판정선으로 씁니다.
 // 페이지 끝에 닿으면 마지막 요소를 현재 위치로 처리합니다.
-function useScrollSpy(ids, { enabled = true, offset = 0.35 } = {}) {
+function useScrollSpy(
+  ids,
+  { enabled = true, offset = 0.35, useScrollMargin = false } = {},
+) {
   const [activeId, setActiveId] = useState(null)
   const idsKey = ids.join(' ')
 
@@ -35,7 +38,12 @@ function useScrollSpy(ids, { enabled = true, offset = 0.35 } = {}) {
         return
       }
 
-      const line = window.innerHeight * offset
+      const scrollMarginTop = useScrollMargin
+        ? Number.parseFloat(window.getComputedStyle(elements[0]).scrollMarginTop) || 0
+        : 0
+      const line = useScrollMargin
+        ? scrollMarginTop + 1
+        : window.innerHeight * offset
       let currentId = null
 
       elements.forEach((element) => {
@@ -62,7 +70,7 @@ function useScrollSpy(ids, { enabled = true, offset = 0.35 } = {}) {
       window.removeEventListener('resize', requestUpdate)
       window.cancelAnimationFrame(frameId)
     }
-  }, [idsKey, enabled, offset])
+  }, [idsKey, enabled, offset, useScrollMargin])
 
   return activeId
 }

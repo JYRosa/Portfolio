@@ -880,6 +880,20 @@
   border-radius: var(--radius-xl);
 }
 
+/* 상세 대표 이미지 (실제 스크린샷) */
+.detail-image {
+  margin: 0 0 var(--space-16);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+}
+
+.detail-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .detail-layout {
   display: grid;
   grid-template-columns: 13.5rem minmax(0, 1fr);
@@ -1194,6 +1208,11 @@
   .image-placeholder-large {
     margin-bottom: var(--space-12);
     aspect-ratio: 16 / 9;
+    border-radius: var(--radius-lg);
+  }
+
+  .detail-image {
+    margin-bottom: var(--space-12);
     border-radius: var(--radius-lg);
   }
 

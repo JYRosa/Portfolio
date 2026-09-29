@@ -22,22 +22,26 @@ function ProjectCard({ project }) {
           <Link className="button" to={`/projects/${project.id}`}>
             View Project
           </Link>
-          <a
-            className="button button-secondary"
-            href={project.links.github}
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
-          <a
-            className="button button-secondary"
-            href={project.links.demo}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Demo
-          </a>
+          {project.links.github && (
+            <a
+              className="button button-secondary"
+              href={project.links.github}
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+          )}
+          {project.links.demo && (
+            <a
+              className="button button-secondary"
+              href={project.links.demo}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Demo
+            </a>
+          )}
         </div>
       </div>
     </article>

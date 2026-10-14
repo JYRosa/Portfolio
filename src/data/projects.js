@@ -83,7 +83,7 @@ const projects = [
   },
   {
     id: 'seoul-rental-analysis',
-    title: 'Seoul Rental Market Analysis',
+    title: 'Seoul Rental Analysis',
     summary:
       '서울 아파트 전월세 실거래 데이터를 정제·분석하고 통계 검정, SQL, XGBoost 예측 모델과 SHAP 해석으로 가격 결정요인을 살펴본 데이터 분석 프로젝트',
     image: 'images/seoul-rental-analysis-main.png',
@@ -109,12 +109,9 @@ const projects = [
       'Python',
       'pandas',
       'SciPy',
-      'statsmodels',
       'scikit-learn',
-      'XGBoost',
       'SHAP',
       'PostgreSQL',
-      'React',
     ],
     role:
       '개인 프로젝트로 데이터 정제, EDA, 통계 분석, SQL 분석, 머신러닝 모델링과 SHAP 해석, 분석 결과 웹 보고서 제작까지 전 과정을 수행했습니다.',

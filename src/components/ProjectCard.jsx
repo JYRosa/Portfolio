@@ -32,14 +32,14 @@ function ProjectCard({ project }) {
               GitHub
             </a>
           )}
-          {project.links.demo && (
+          {project.links.link && (
             <a
               className="button button-secondary"
-              href={project.links.demo}
+              href={project.links.link}
               target="_blank"
               rel="noreferrer"
             >
-              Demo
+              LINK
             </a>
           )}
         </div>

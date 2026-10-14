@@ -861,7 +861,7 @@
   letter-spacing: -0.04em;
 }
 
-.detail-header p:last-child {
+.detail-header .detail-summary {
   max-width: 44rem;
   margin-bottom: 0;
   color: var(--color-text-muted);
@@ -1041,8 +1041,8 @@
   margin-bottom: var(--space-6);
 }
 
-.detail-section .button-group {
-  margin-top: var(--space-2);
+.detail-header .button-group {
+  margin-top: var(--space-8);
 }
 
 .back-link {

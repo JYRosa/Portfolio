@@ -22,7 +22,7 @@ npm run preview
 
 - `/`: 긴 스크롤 형태의 메인 포트폴리오
 - `/projects/aegis-prop`: Aegis-Prop 상세 페이지
-- `/projects/data-analysis`: Data Analysis Project 상세 페이지
+- `/projects/seoul-rental-analysis`: Seoul Rental Market Analysis 상세 페이지
 - `/projects/spring-blog`: Spring Boot Blog 상세 페이지
 
 프로젝트 상세 페이지는 `src/data/projects.js`의 데이터를 `/projects/:projectId` 경로에서 공통 컴포넌트로 렌더링합니다.
@@ -55,7 +55,7 @@ vercel.json            # Vercel SPA fallback
 - 스크롤 페이드업·커서 효과: `src/components/InteractionEffects.jsx`
 - 히어로 기술→프로젝트 그래프: `src/components/HeroGraph.jsx` (대표 기술은 `Hero.jsx`의 `featuredSkills`, 연결선은 `projects.js`의 `techStack`으로 자동 생성, 1100px 이상에서만 표시)
 
-`Resume` 버튼은 `/resume.pdf`를 가리킵니다. 실제 이력서를 사용할 때 `public/resume.pdf` 파일을 추가하세요. GitHub와 Demo 주소는 현재 placeholder이므로 실제 주소로 교체해야 합니다.
+`Resume` 버튼은 `/resume.pdf`를 가리킵니다. 실제 이력서를 사용할 때 `public/resume.pdf` 파일을 추가하세요. Spring Boot Blog의 GitHub와 LINK 주소는 현재 placeholder이므로 실제 주소로 교체해야 합니다.
 
 ## 배포 시 새로고침 처리
 

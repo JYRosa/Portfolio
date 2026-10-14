@@ -78,35 +78,56 @@ const projects = [
     ],
     links: {
       github: 'https://github.com/JYRosa/Aegis-Prop',
-      demo: 'https://aegisprop-ai.com',
+      link: 'https://aegisprop-ai.com',
     },
   },
   {
-    id: 'data-analysis',
-    title: 'Data Analysis Project',
+    id: 'seoul-rental-analysis',
+    title: 'Seoul Rental Market Analysis',
     summary:
-      '데이터 수집, 전처리, 분석 및 시각화를 통해 의미 있는 인사이트를 도출하는 데이터 분석 프로젝트',
+      '서울 아파트 전월세 실거래 데이터를 정제·분석하고 통계 검정, SQL, XGBoost 예측 모델과 SHAP 해석으로 가격 결정요인을 살펴본 데이터 분석 프로젝트',
+    image: 'images/seoul-rental-analysis-main.png',
+    imageAlt: 'Seoul Rental Market Analysis 분석 보고서 첫 화면',
+    // 상세 분석 과정과 결과는 LINK의 웹 보고서에서 다루고, 여기에는 요약만 둡니다.
     overview:
-      '분석 목적에 맞는 데이터를 수집하고 정제한 뒤 탐색적 분석과 시각화를 수행하는 프로젝트입니다.',
-    problem: placeholderText,
-    goals: [placeholderText],
-    features: [
-      '데이터 수집 및 정제',
-      '탐색적 데이터 분석',
-      '분석 결과 시각화',
+      '서울시 부동산 전월세가 정보(2023~2025) 중 아파트 거래 881,794건을 정제해 EDA, 가설 검정, PostgreSQL 분석, 전세·월세 가격 예측 모델링, SHAP 해석까지 하나의 분석 파이프라인으로 수행했습니다. 상세한 분석 과정과 결과는 상단 LINK의 웹 보고서에서 확인할 수 있습니다.',
+    problem:
+      '전월세 가격은 지역, 면적, 건축연식 등 여러 조건이 함께 얽혀 있어 단순 비교만으로는 가격 차이를 해석하기 어렵습니다. 예를 들어 전체 월세 데이터에서는 보증금과 월세가 약한 양의 상관을 보이지만, 지역과 면적을 통제하면 관계가 반대로 나타났습니다. 조건을 통제한 분석과 해석 가능한 예측 모델이 필요했습니다.',
+    goals: [
+      '자치구, 전용면적, 건축연식에 따른 전세가격 차이를 통계적으로 검증합니다.',
+      '유사한 지역·면적 조건에서 보증금과 월세 사이의 관계를 확인합니다.',
+      '미래 데이터 누수 없이 전세·월세 가격 예측 모델을 구축하고 SHAP으로 예측 근거를 해석합니다.',
     ],
-    architecture:
-      '데이터 수집, 전처리, 분석, 시각화 단계로 구성된 분석 파이프라인입니다.',
-    techStack: ['Python', 'Pandas', 'Matplotlib'],
-    role: placeholderText,
-    implementations: [placeholderText],
-    challenges: [placeholderText],
-    solutions: [placeholderText],
-    results: [placeholderText],
-    improvements: [placeholderText],
+    features: [
+      '원본 데이터 품질 검사 및 정제 (2023~2025 서울 아파트 881,794건)',
+      'Kruskal-Wallis, 상관분석, 다중회귀 기반 가설 검정 (H1~H5)',
+      'PostgreSQL CTE·Window Function 기반 자치구·법정동 가격 분석',
+      'Median Baseline, Ridge, Random Forest, XGBoost 모델 비교 (Train 2023~2024 / Test 2025)',
+      'SHAP 기반 Feature 중요도 및 영향 방향 해석',
+    ],
+    techStack: [
+      'Python',
+      'pandas',
+      'SciPy',
+      'statsmodels',
+      'scikit-learn',
+      'XGBoost',
+      'SHAP',
+      'PostgreSQL',
+      'React',
+    ],
+    role:
+      '개인 프로젝트로 데이터 정제, EDA, 통계 분석, SQL 분석, 머신러닝 모델링과 SHAP 해석, 분석 결과 웹 보고서 제작까지 전 과정을 수행했습니다.',
+    results: [
+      '서울 25개 자치구의 단위면적당 전세가격 분포에 유의한 차이가 확인되었습니다. (Kruskal-Wallis p < 0.001, ε² = 0.3124)',
+      '지역·면적·층·계약연도를 통제한 후에도 건축연식이 1년 증가할 때 전세보증금이 평균 약 1.18% 낮아지는 관계가 관찰되었습니다.',
+      '다른 조건을 통제하면 보증금 1% 증가 시 월세가 평균 약 0.257% 낮아지는 관계가 관찰되었고, 60~85㎡ 기준 25개 자치구 모두 음의 상관을 보였습니다.',
+      '최종 XGBoost 모델은 2025년 Test 데이터에서 전세 R² 0.8403(MAE 9,074만원), 월세 R² 0.7885(MAE 29.32만원)를 기록해 Median Baseline 대비 MAE를 각각 62.84%, 60.98% 개선했습니다.',
+      'SHAP 분석에서 전세·월세 모델 모두 임대면적이 가장 중요한 Feature로 나타났습니다.',
+    ],
     links: {
-      github: 'https://github.com/username/data-analysis',
-      demo: 'https://example.com/data-analysis',
+      github: 'https://github.com/JYRosa/seoul-rental-analysis',
+      link: 'https://jyrosa.github.io/seoul-rental-analysis/',
     },
   },
   {
@@ -139,7 +160,7 @@ const projects = [
     improvements: [placeholderText],
     links: {
       github: 'https://github.com/username/spring-blog',
-      demo: 'https://example.com/spring-blog',
+      link: 'https://example.com/spring-blog',
     },
   },
 ]
